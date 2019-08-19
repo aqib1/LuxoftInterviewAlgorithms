@@ -1,5 +1,8 @@
-package java.utils.BT.io;
+package com.utils.BT.io;
+
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Queue;
 
 public class BT<V> {
 	private Node<V> root;
@@ -59,6 +62,39 @@ public class BT<V> {
 			return find(node.leftNode, key);
 		}
 	}
+	
+	public void traverseBT(BTTraversal btTraversal, BT<V>.Node<V> newRoot) {
+		switch (btTraversal) {
+		case LEVEL_ORDER:
+				levelOrderTraversal(newRoot);
+			break;
+		default:
+			break;
+		}
+	}
+
+	public void traverseBT(BTTraversal btTraversal) {
+		traverseBT(btTraversal, root);
+	}
+	
+	private void levelOrderTraversal(BT<V>.Node<V> newRoot) {
+		Queue<Node<V>> queue = new LinkedList<BT<V>.Node<V>>();
+		queue.add(newRoot);
+		
+		while(!queue.isEmpty()) {
+			Node<V> node = queue.poll();
+			System.out.println(node);
+			
+			if(!Objects.isNull(node.leftNode))
+				queue.add(node.leftNode);
+			
+			if(!Objects.isNull(node.rightNode))
+				queue.add(node.rightNode);
+		}
+	}
+
+
+	
 
 	class Node<M> {
 		private int key;
