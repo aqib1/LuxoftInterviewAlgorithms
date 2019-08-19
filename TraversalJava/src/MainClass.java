@@ -11,7 +11,7 @@ public class MainClass {
 		bt.add(10, "Nudrat");
 		bt.add(11, "shj");
 		bt.add(9, "jhwl");
-		bt.traverseBT(BTTraversal.LEVEL_ORDER);
+		bt.traverseBT(BTTraversal.SPIRAL_TRAVERSAL);
 	}
 
 }
